@@ -1,0 +1,45 @@
+.main-form {
+  border-radius: 10px;
+  background-color: cadetblue;
+  box-sizing: border-box;
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+.main-form_input-container {
+  padding: 5px 30px;
+}
+
+.main-form_label {
+  color: #eee;
+  display: block;
+}
+
+.main-form_input {
+  align-self: flex-end;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.main-form_button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-form_button {
+  margin-top: 10px;
+  font-size: 18px;
+  background-color: darkmagenta;
+  border-radius: 20px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  outline: 0;
+  text-align: center;
+  padding: 5px 10px;
+}

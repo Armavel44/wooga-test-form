@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Form component for Wooga 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Since the main task was to build a generic form component our Form accepts props `fields` and `width`.
+With `width` prop we can specify the desired width of our form, height is auto calculated based on number of our fields.
+`fields` props accepts an array where every single field should be declared as FormField type:
 
-## Available Scripts
+    type FormField = {
+        name: string
+        label: string
+        validate?: (value: string) => boolean
+        validationMessage?: string
+    }
 
-In the project directory, you can run:
+## `name`
+Technical name, should be unique for each form, required  
 
-### `npm start`
+## `label`
+Label that is shown to user on the form, required
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## `validate`
+Method for validation, optional. If present field may be validated, must return true if incorrect  
+Requires validationMessage to display information about errors to user
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## `validationMessage`
+Message that is shown to user on errors, required for validation  
+Using this approach to validation developers can provide any custom and complex validation rules to component
+validationMessage?: string
 
-### `npm test`
+##
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Our Form component will render as many fields as there are in formFields prop. So we can use
+our new component whenever we need to display a form to user and developer can customise it as needed.
+Everything project specific may be applied outside the component
 
-### `npm run build`
+As long as forms in the app only need to differ with its content, out component is resilient to changes.
+We can add or remove fields, add validation to fields as we need for each field. It will always
+(send data to backend) display submit result in the same way or show errors to user.  
+Ideally, custom styles support should be added and component should be covered with unit tests.  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Working example may be found in `App.tsx`  
+App was created using create-react-app
+To run type `npm run start` in console

@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Form} from './components/Form';
+
+const formFields = [
+    {
+        label: 'Name',
+        name: 'name',
+        validate: (value: string) => {
+            const validationPattern = /^wooga\.name.*/;
+            return !validationPattern.test(value);
+        },
+        validationMessage: `Name input value doesn't follow the pattern wooga.name`
+    },
+    {
+        label: 'Email',
+        name: 'email',
+        validate: (value: string) => {
+            const validationPattern = /^wooga\.email.*/;
+            return !validationPattern.test(value);
+        },
+        validationMessage: `Email input value doesn't follow the pattern wooga.email`
+    },
+    {
+        label: 'Game',
+        name: 'game'
+    }
+]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form fields={formFields} width={300} />
     </div>
   );
 }
